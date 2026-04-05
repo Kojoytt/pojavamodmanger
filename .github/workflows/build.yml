@@ -11,16 +11,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Unzip and setup project
-        run: |
-          unzip PojavModManager.zip -d project
-          echo "=== All files ==="
-          find project -type f
+      - name: Unzip
+        run: unzip PojavModManager.zip -d project
 
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: Fix gradle.properties
+        run: |
+          echo "android.useAndroidX=true" >> project/PojavModManager/gradle.properties
+          echo "android.enableJetifier=true" >> project/PojavModManager/gradle.properties
 
       - name: Setup Gradle
         run: |
