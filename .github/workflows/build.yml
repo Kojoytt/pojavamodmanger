@@ -19,21 +19,28 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Fix gradle.properties
+      - name: Fix properties and gradle version
         run: |
           echo "android.useAndroidX=true" >> project/PojavModManager/gradle.properties
           echo "android.enableJetifier=true" >> project/PojavModManager/gradle.properties
+          cat > project/PojavModManager/gradle/wrapper/gradle-wrapper.properties << 'EOF'
+          distributionBase=GRADLE_USER_HOME
+          distributionPath=wrapper/dists
+          distributionUrl=https\://services.gradle.org/distributions/gradle-8.4-bin.zip
+          zipStoreBase=GRADLE_USER_HOME
+          zipStorePath=wrapper/dists
+          EOF
 
       - name: Setup Gradle
         run: |
           cd project/PojavModManager
-          gradle wrapper
+          gradle wrapper --gradle-version 8.4
 
       - name: Build APK
         run: |
           cd project/PojavModManager
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
