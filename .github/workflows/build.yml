@@ -10,18 +10,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Unzip
-        run: unzip PojavModManager.zip -d project
+        run: |
+          unzip PojavModManager.zip -d project
+          echo "=== Contents ==="
+          find project -type f | head -30
+
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
+
       - name: Build APK
         run: |
-          chmod +x project/PojavModManager/gradlew
-          cd project/PojavModManager
+          find project -name "gradlew" | head -5
+          GRADLEW=$(find project -name "gradlew" | head -1)
+          DIR=$(dirname $GRADLEW)
+          chmod +x $GRADLEW
+          cd $DIR
           ./gradlew assembleDebug
+
       - uses: actions/upload-artifact@v4
         with:
           name: APK
-          path: project/PojavModManager/app/build/outputs/apk/debug/app-debug.apk
+          path: "**/*.apk"
