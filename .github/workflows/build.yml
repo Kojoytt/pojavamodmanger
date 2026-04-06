@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Unzip
-        run: unzip PojavModManager.zip -d project
+        run: unzip PojavModManagerV2.zip -d project
       - uses: actions/setup-java@v4
         with:
           java-version: '17'
           distribution: 'temurin'
       - name: Setup project
-        working-directory: project/PojavModManager
+        working-directory: project/PojavModManagerV2
         run: |
           echo "android.useAndroidX=true" >> gradle.properties
           echo "android.enableJetifier=true" >> gradle.properties
@@ -23,7 +23,7 @@ jobs:
           printf 'distributionBase=GRADLE_USER_HOME\ndistributionPath=wrapper/dists\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-8.4-bin.zip\nzipStoreBase=GRADLE_USER_HOME\nzipStorePath=wrapper/dists\n' > gradle/wrapper/gradle-wrapper.properties
           gradle wrapper --gradle-version 8.4
       - name: Build APK
-        working-directory: project/PojavModManager
+        working-directory: project/PojavModManagerV2
         run: |
           chmod +x gradlew
           ./gradlew assembleDebug --no-daemon
