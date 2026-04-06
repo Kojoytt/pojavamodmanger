@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0a0a14">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#12122a"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp">
+
+        <TextView
+            android:text="⛏"
+            android:textSize="26sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="Pojav Mod Manager"
+                android:textSize="18sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:text="Modrinth + CurseForge"
+                android:textSize="11sp"
+                android:textColor="#bb86fc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSettings"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="⚙"
+            android:textSize="16sp"
+            android:padding="0dp"
+            android:backgroundTint="#2a2a3e"/>
+
+    </LinearLayout>
+
+    <!-- Tabs -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#0f0f20"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="6dp">
+
+        <Button
+            android:id="@+id/btnTabMods"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:text="Mods"
+            android:textSize="11sp"
+            android:layout_marginHorizontal="2dp"
+            android:backgroundTint="#6200ea"/>
+
+        <Button
+            android:id="@+id/btnTabShaders"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:text="Shaders"
+            android:textSize="11sp"
+            android:layout_marginHorizontal="2dp"
+            android:backgroundTint="#2a2a3e"/>
+
+        <Button
+            android:id="@+id/btnTabResources"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:text="Resources"
+            android:textSize="10sp"
+            android:layout_marginHorizontal="2dp"
+            android:backgroundTint="#2a2a3e"/>
+
+        <Button
+            android:id="@+id/btnTabWorlds"
+            android:layout_width="0dp"
+            android:layout_height="34dp"
+            android:layout_weight="1"
+            android:text="Worlds"
+            android:textSize="11sp"
+            android:layout_marginHorizontal="2dp"
+            android:backgroundTint="#2a2a3e"/>
+
+    </LinearLayout>
+
+    <!-- Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#0f0f20"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="8dp">
+
+        <!-- Instance + Source -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dp">
+
+            <Spinner
+                android:id="@+id/spinnerInstance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#1e1e2e"
+                android:layout_marginEnd="6dp"/>
+
+            <Spinner
+                android:id="@+id/spinnerSource"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#1e1e2e"/>
+
+        </LinearLayout>
+
+        <!-- Search -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/etSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Search..."
+                android:textColorHint="#555"
+                android:textColor="#fff"
+                android:background="#1e1e2e"
+                android:padding="10dp"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:layout_marginEnd="6dp"/>
+
+            <Button
+                android:id="@+id/btnSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔍"
+                android:backgroundTint="#6200ea"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Status -->
+    <TextView
+        android:id="@+id/tvStatus"
+        android:text="Ready — select a tab and search"
+        android:textColor="#666"
+        android:textSize="11sp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:background="#0a0a14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <!-- List -->
+    <ListView
+        android:id="@+id/listMods"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0a0a14"
+        android:divider="#12122a"
+        android:dividerHeight="4dp"/>
+
+</LinearLayout>
